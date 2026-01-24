@@ -1,0 +1,72 @@
+button,
+.button {
+  background-color:white;
+  border-radius: 5px;
+  font-size: 20px;
+  color: blueviolet;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 6px 18px;
+  justify-content: center; 
+  align-items: center;  
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #07351b;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.basic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loading / fallback / empty states */
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Example modifiers
+button:hover,
+.button:hover {
+  color: #ff5252;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+button.selected,
+.button.selected {
+  color: #ffd700;
+  background-color: rgba(255, 255, 255, 0.05);
+} 
+*/
+
+
+
+/* unused */
+.collection-item {
+  margin: 5px 0;
+}
+
+/* Collection section */
+.collection-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.media-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 90vw;
+}
