@@ -44,7 +44,7 @@ async def saveFile(file: UploadFile = File(...)):
     with open(filePath, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    return{"fileName": fileName, "url": f"/files/{fileName}"}
+    return{"message": "Success"}
 
 
 @app.get("/files/{fileName}")
