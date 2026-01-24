@@ -16,7 +16,7 @@ os.environ["OPENAI_API_KEY"] = "sk-proj-LtYQ9B8c3_WdXOO5O5OxQSHonwB7CRDljSw0QKob
 
 
 
-client = OpenAI()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 # extract image from a url
