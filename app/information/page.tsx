@@ -2,7 +2,6 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import "../style.css";
 import BackArrow from "/back_arrow.svg";
 import about_us from "./about_us.svg";
 import github_logo from "./github_logo.svg";

@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { error } from "console";
-import "./style.css";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
