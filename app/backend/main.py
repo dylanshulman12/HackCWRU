@@ -46,9 +46,7 @@ async def saveFile(file: UploadFile = File(...)):
     with open(filePath, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    return{"fileName": fileName, "url": fileName}
 
-# http://localhost:8000/api/files?image=${image}
 @app.get("/api/files")
 def servePNG(image: str):
     filePath = os.path.join(UPLOAD_DIR, image)
