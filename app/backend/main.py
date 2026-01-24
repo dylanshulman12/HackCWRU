@@ -32,10 +32,12 @@ app.add_middleware(
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-@app.post("/upload")
+@app.post("/api/upload")
 async def saveFile(file: UploadFile = File(...)):
-    if not file.filename.lower().endswith(".png"):
-        raise HTTPException(status_code=400, detail="Only PNG files allowed")
+    extension = (".png", ".jpg", ".jpeg", ".heic")
+
+    # if not file.filename.lower().endswith(extension):
+    #     raise HTTPException(status_code=400, detail="Only image files allowed")
 
     fileName : str = file.filename
 
@@ -44,15 +46,13 @@ async def saveFile(file: UploadFile = File(...)):
     with open(filePath, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    return{"fileName": fileName, "url": f"/files/{fileName}"}
 
-
-@app.get("/files/{fileName}")
-def servePNG(fileName: str):
-    filePath = os.path.join(UPLOAD_DIR, fileName)
+@app.get("/api/files")
+def servePNG(image: str):
+    filePath = os.path.join(UPLOAD_DIR, image)
 
     if not os.path.exists(filePath):
-        raise HTTPException(status_code=404, detail="File not found")
+        return {"status": filePath}
     
     return FileResponse(filePath, media_type = "image/png")
  
