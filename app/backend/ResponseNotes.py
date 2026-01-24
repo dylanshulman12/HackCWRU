@@ -13,6 +13,6 @@ def createNotes(isRecyclable, typePlastic, locationData):
     print(response.output_text)
 
 
-createNotes("is", "PET", "allows recycling PET in Boston")
+
 
 
