@@ -10,10 +10,10 @@ from PIL import Image
 import pytesseract
 import requests
 from io import BytesIO
+from dotenv import load_dotenv
 
 import os
-os.environ["OPENAI_API_KEY"] = "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"
-
+load_dotenv()
 
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
