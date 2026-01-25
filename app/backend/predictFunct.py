@@ -45,7 +45,8 @@ def material_model_predict(image_path):
     image = np.array(image)
     image = np.expand_dims(image, axis=0)
 
-    predictions = model.predict(image)[0]
+    logits = model.predict(image)[0]
+    predictions = tf.nn.softmax(logits).numpy()
 
     class_index = int(np.argmax(predictions))
     confidence = float(np.max(predictions))
