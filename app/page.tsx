@@ -37,7 +37,7 @@ export default function Home() {
 
 
         
-        const jsonfile = await fetch("http://localhost:8000/api/plasticGet?file="+{image}+"&city=Cleveland&state=Ohio&zipCode=44106")
+        const jsonfile = await fetch(`http://localhost:8000/api/plasticGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)
 
 
         //change to information page, and get image for display

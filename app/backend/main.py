@@ -87,9 +87,6 @@ def servePNG(image: str):
 
 @app.get("/api/plasticGet")
 def callReturnFile(file : str, city, state, zipCode):  
-    #return FileResponse("uploads/" + file, media_type = "image/png")
-    
-    
     result = getReturnPlastic("uploads/" + file, city, state, zipCode)
     resultPath = os.path.join(UPLOAD_DIR, result)
 
@@ -100,8 +97,7 @@ def callReturnFile(file : str, city, state, zipCode):
 
 @app.get("/api/materialGet")
 def callReturnFile(file, city, state, zipCode): 
-    print(file) 
-    result = getReturnMaterial(file, city, state, zipCode)
+    result = getReturnMaterial("uploads/" + file, city, state, zipCode)
     resultPath = os.path.join(UPLOAD_DIR, result)
 
     return FileResponse(resultPath, media_type = "application/json")

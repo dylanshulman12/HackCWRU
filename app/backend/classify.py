@@ -14,7 +14,7 @@ def classify_plastic(material):
           or material == "6_polystyrene_PS"
           or material == "7_other_resins"):
         mat_str = "Rigids__3_to_7"
-    elif material == "8_no_plastic":
+    else:
         mat_str = None
     return mat_str
 
