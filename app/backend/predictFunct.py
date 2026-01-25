@@ -13,6 +13,7 @@ def plastic_model_predict(image_path):
 
     image = Image.open(image_path).convert("RGB")
     image = image.resize((200, 200))
+    image = np.array(image).astype("float32")  #part of normalisation
     image = tf.keras.applications.mobilenet_v2.preprocess_input(image) #mobilenet_v2 normalisation
     image = np.array(image)
     image = np.expand_dims(image, axis=0)
@@ -90,6 +91,7 @@ def material_model_predict(image_path):
         
 
     return data    
+
 
 
 
