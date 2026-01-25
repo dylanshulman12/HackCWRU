@@ -21,15 +21,28 @@ def plastic_model_predict(image_path):
 
     class_index = int(np.argmax(predictions))
     confidence = float(np.max(predictions))
-    
-    data = {
-        "predicted_class": class_names[class_index],
-        "confidence": confidence,
-        "probabilities": {
-            class_names[i]: float(predictions[i])
-            for i in range(len(class_names))
+
+    PLASTICS_THRESHOLD = 0.45
+
+    if confidence > PLASTICS_THRESHOLD:
+        data = {
+            "predicted_class": class_names[class_index],
+            "confidence": confidence,
+            "probabilities": {
+                class_names[i]: float(predictions[i])
+                for i in range(len(class_names))
+            }
         }
-    }
+    else:
+        data = {
+            "predicted_class": "We're not sure, but it might be " + class_names[class_index],
+            "confidence": confidence,
+            "probabilities": {
+                class_names[i]: float(predictions[i])
+                for i in range(len(class_names))
+            }
+        }
+        
     return data
 # json with what it is, confidence, weights 
 
@@ -61,3 +74,4 @@ def material_model_predict(image_path):
     }
 
     return data    
+
