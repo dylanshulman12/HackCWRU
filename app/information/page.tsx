@@ -6,6 +6,8 @@ import BackArrow from "/back_arrow.svg";
 import about_us from "./about_us.svg";
 import github_logo from "./github_logo.svg";
 import loadingGif from "./public/loading.gif";
+import data from "../src/finalDataReturn.json";
+
 
 export default function display() {
   const searchParams = useSearchParams();
@@ -14,7 +16,8 @@ export default function display() {
   const [loading, setLoading] = useState(true);
   //object still undefined... Have to specify type
   //   const [information, setInformation] = useState<{ object } | null>(null);
-
+  
+    
   const handleBack = () => {
     router.push("/");
   };
@@ -27,9 +30,8 @@ export default function display() {
     router.push('/aboutus')
 
   };
-  
 
-  if (!loading) {
+  if (loading) {
     return (
       <div>
         {/* top nav bar div with just a top left back button and an info button for team members, with link to git source code*/}
@@ -72,9 +74,10 @@ export default function display() {
                   justifyContent: "space-between",
                 }}
               >
-                <div className="status-container">yoooooo</div>
+                <div className="status-container">Data: {data?.isRecyclable}</div>
+                
 
-                <div className="text-container">Information</div>
+                <div className="text-container">Information: {data?.notes}</div>
               </div>
             </div>
           </div>

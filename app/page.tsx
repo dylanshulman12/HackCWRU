@@ -7,6 +7,7 @@ import { error } from "console";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
+  const [jsonupload, setJSON] = useState<File |null>(null);
   const [location, setLocation] = useState<{
     latitude: number;
     longitude: number;
@@ -31,10 +32,13 @@ export default function Home() {
           body: formData,
         });
         const response = await upload.json();
-        console.log(response);
+        //console.log(response);
+        
+        const jsonfile = await fetch("http://localhost:8000/api/location?file="+{file}+"&city=Cleveland&state=OH&zipCode=44106")
+
 
         //change to information page, and get image for display
-        router.push(`/information?image=${encodeURIComponent(image)}`);
+        router.push(`/information?image=${encodeURIComponent(image)}&jsonfile=${encodeURIComponent(jsonfile)}`);
       }
     }
     informationSwap();
@@ -57,9 +61,28 @@ export default function Home() {
 
     getLocation();
   }, []);
-  const handleClick = () => {
+
+  // useEffect(() => {
+  //   async function getInfo() {
+  //     if (jsonupload)
+  //     const data = await fetch("http://localhost:8000/api/info", {
+  //       method: "POST",
+
+  //     });
+
+  //   }
+  //   getInfo()
+  // }, []);
+
+  const handleClick1 = () => {
+    hiddenFileInput.current.click();
+    //const location = await fetch("http://localhost:8000/api/info");
+  };
+
+  const handleClick2 = () => {
     hiddenFileInput.current.click();
   };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
@@ -99,10 +122,23 @@ export default function Home() {
           </button>
       </div>
       <div className="page">
+        <div
+            style={{
+              height: "75vh",
+              width: "85vw",
+              background: "#414833",
+              border: "solid #414833 40px",
+              borderRadius: "10px",
+            }}
+          >
           <div>Upload Files</div>
           <PrintPosition />
-          <div className="button" onClick={handleClick}>
-            Upload Photo
+          <div className="button" onClick={handleClick1}>
+            Plastics with Symbol
+          </div>
+          <br></br>
+          <div className="button" onClick={handleClick2}>
+            Other Materials
           </div>
           <input
             id="file"
@@ -111,6 +147,7 @@ export default function Home() {
             style={{ display: "none" }}
             onChange={handleFileChange}
           />
+          </div>
         </div>
     </>
   );
