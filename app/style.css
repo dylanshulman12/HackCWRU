@@ -1,13 +1,14 @@
 button,
 .button {
-  background-color:white;
+  display : "flex";
+  width: 500px;
+  background-color:rgb(170, 171, 160);
   border-radius: 5px;
   font-size: 20px;
-  color: blueviolet;
+  color: rgb(20, 8, 0);
   font-family: 'Source Sans Pro', sans-serif;
   padding: 6px 18px;
-  justify-content: center; 
-  align-items: center; 
+  text-align: center; 
   
 }
 

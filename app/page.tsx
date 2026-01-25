@@ -36,8 +36,13 @@ export default function Home() {
         console.log("image path thing: " + image);
 
 
-        
-        const jsonfile = await fetch(`http://localhost:8000/api/plasticGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)
+        if(choice){
+          const jsonfile = await fetch("http://localhost:8000/api/materialGet?file="+{image}+"&city=Cleveland&state=Ohio&zipCode=44106")          
+        }
+        else{
+          const jsonfile = await fetch("http://localhost:8000/api/plasticGet?file="+{image}+"&city=Cleveland&state=Ohio&zipCode=44106")
+
+        }
 
 
         //change to information page, and get image for display
@@ -126,20 +131,24 @@ export default function Home() {
             <img src="/github_logo.svg" alt="Github" />
           </button>
       </div>
-      <div className="page">
+      <div className="page"> 
+          <img src="/cats_logo.png" alt="Logo" style={{height : "50%", }}/>
         <div
             style={{
-              height: "75vh",
+              height: "30vh",
               width: "85vw",
               background: "#414833",
               border: "solid #414833 40px",
               borderRadius: "10px",
+              padding: "10px",
+              flex: "row",
+              alignContent : "center",
             }}
           >
           <div>Upload Files</div>
-          <PrintPosition />
+          {/* <PrintPosition /> */}
           <div className="button" onClick={handleClick1}>
-            Plastics with Symbol
+            Plastics with a Symbol
           </div>
           <br></br>
           <div className="button" onClick={handleClick2}>
