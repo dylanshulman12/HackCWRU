@@ -4,30 +4,21 @@ from responseNotes import *
 from query import *
 from classify import *
 
-def getReturnPlastic(file):
+def getReturnPlastic(file, city, state, zipCode):
     typePlastic = plastic_model_predict(file.filename)
     classifiedPlastic = classify_plastic(typePlastic)
 
-    return getReturnTotal(classifiedPlastic)
+    return getReturnTotal(classifiedPlastic, city, state, zipCode)
 
-def getReturnMaterial(file):
+def getReturnMaterial(file, city, state, zipCode):
     typeOther = material_model_predict(file.filename)
-    classifiedOther = classify_other(typeOther)
+    classifiedOther = classify_other(typeOther, city, state, zipCode)
 
     return getReturnTotal(classifiedOther)
     
-def getReturnTotal(material): 
+def getReturnTotal(material, city, state, zipCode): 
     # query's connect
     connect()
-
-    # find the location
-    with open('location.json', 'r') as file:
-        data = json.load(file)
-
-    # Accessing data like a Python dictionary
-    zipCode = data['zip_code']
-    city = data['city']
-    state = data['state']
 
     isRecyclable = recyclable(zipCode, material)
     notes = createNotes((city + ", " + state), material, isRecyclable)
