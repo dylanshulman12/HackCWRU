@@ -13,6 +13,7 @@ def plastic_model_predict(image_path):
 
     image = Image.open(image_path).convert("RGB")
     image = image.resize((200, 200))
+    image = tf.keras.applications.mobilenet_v2.preprocess_input(image) #mobilenet_v2 normalisation
     image = np.array(image)
     image = np.expand_dims(image, axis=0)
 
@@ -33,6 +34,7 @@ def plastic_model_predict(image_path):
                 for i in range(len(class_names))
             }
         }
+        print(image.min(), image.max()) # CHECK FOR DOUBLE NORMALISATION
     else:
         data = {
             "predicted_class": "We're not sure, but it might be " + class_names[class_index],
@@ -42,6 +44,7 @@ def plastic_model_predict(image_path):
                 for i in range(len(class_names))
             }
         }
+        print(image.min(), image.max()) # CHECK FOR DOUBLE NORMALISATION
         
     return data
 # json with what it is, confidence, weights 
@@ -87,5 +90,6 @@ def material_model_predict(image_path):
         
 
     return data    
+
 
 
