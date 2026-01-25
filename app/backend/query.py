@@ -9,10 +9,19 @@ def connect():
 
 
     SUPABASE_URL = os.environ.get("SUPABASE_URL")
-    SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+    SUPABASE_KEY = os.environ.get("SUPABASE_KEY_ANON")
 
+    if not SUPABASE_URL or not SUPABASE_KEY:
+        raise ValueError("SUPABASE_URL and SUPABASE_KEY must be set in environment variables.")
+
+    #try:
     supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
     return supabase
+
+    #except:
+        #print("error URL:", SUPABASE_URL, "key:", SUPABASE_KEY)
+
+
 
 #if recyclable
 def recyclable(zipcode, material):

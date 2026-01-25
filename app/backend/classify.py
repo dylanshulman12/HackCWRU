@@ -15,7 +15,7 @@ def classify_plastic(material):
           or material == "7_other_resins"):
         mat_str = "Rigids__3_to_7"
     else:
-        mat_str = None
+        mat_str = ""
     return mat_str
 
 #other items
@@ -31,7 +31,7 @@ def classify_other(item):
     elif (item == "Paper"):
         mat_str = "Paper"
     else:
-        mat_str = None
+        mat_str = ""
     return mat_str
 
 def get_confidence(dict):

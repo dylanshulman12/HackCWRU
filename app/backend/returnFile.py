@@ -26,7 +26,7 @@ def getReturnMaterial(file, city, state, zipCode):
     
 def getReturnTotal(material, city, state, zipCode, if_confident): 
     isRecyclable = recyclable(zipCode, material)
-    notes = createNotes((city + ", " + state), material, isRecyclable)
+    notes = createNotes((city + ", " + state), material, isRecyclable, if_confident)
     #ask abt this where to put confidence
     returnData = {
         "ifConfident" : if_confident,

@@ -15,8 +15,12 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
+api_key = os.environ.get("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("OPENAI_API_KEY environment variable not set")
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Create the client
+client = OpenAI(api_key=api_key)
 
 
 # extract image from a url
