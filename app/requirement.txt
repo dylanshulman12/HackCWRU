@@ -98,7 +98,7 @@ entrypoints @ file:///Users/cbousseau/work/recipes/ci_py311/entrypoints_16779117
 et-xmlfile==1.1.0
 etils==1.12.2
 executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
-fastapi
+fastapi==0.128.0
 fastapi-cli==0.0.20
 fastapi-cloud-cli==0.11.0
 fastapi-middleware==0.2.1
@@ -121,17 +121,18 @@ GitPython @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_
 gmpy2 @ file:///Users/cbousseau/work/recipes/ci_py311/gmpy2_1677937751357/work
 google-pasta==0.2.0
 googleapis-common-protos==1.70.0
+gotrue==1.3.1
 greenlet @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_516imz09pb/croot/greenlet_1702059966336/work
 grpcio==1.72.1
-h11==0.16.0
+h11==0.14.0
 h2==4.3.0
 h5py==3.13.0
 HeapDict @ file:///Users/ktietz/demo/mc3/conda-bld/heapdict_1630598515714/work
 holoviews @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_e2ffhlmgnd/croot/holoviews_1707836458582/work
 hpack==4.1.0
-httpcore==1.0.9
+httpcore==0.17.3
 httptools==0.7.1
-httpx==0.28.1
+httpx==0.24.1
 hvplot @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_a5ty3nz7ng/croot/hvplot_1706712400461/work
 hyperframe==6.1.0
 hyperlink @ file:///tmp/build/80754af9/hyperlink_1610130746837/work
@@ -260,7 +261,7 @@ platformdirs @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/a
 plotly @ file:///Users/cbousseau/work/recipes/ci_py311/plotly_1677953301864/work
 pluggy @ file:///Users/cbousseau/work/recipes/ci_py311/pluggy_1677906980825/work
 ply==3.11
-postgrest==2.27.2
+postgrest==0.10.8
 prometheus-client @ file:///Users/cbousseau/work/recipes/ci_py311_2/prometheus_client_1678996808082/work
 promise==2.3
 prompt-toolkit @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_c63v4kqjzr/croot/prompt-toolkit_1704404354115/work
@@ -383,13 +384,14 @@ SQLAlchemy @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs
 stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
 starlette==0.50.0
 statsmodels @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_d39rlzrllo/croot/statsmodels_1689937269798/work
-storage3==2.27.2
+storage3==0.5.4
 streamlit @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_6ebb6f6mt5/croot/streamlit_1706200490589/work
 StrEnum==0.4.15
 strictyaml==1.7.3
 supabase==1.0.4
 supabase-auth==2.27.2
 supabase-functions==2.27.2
+supafunc==0.2.3
 sympy @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_7cbpg8656h/croot/sympy_1701397648473/work
 tables @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_b2h37objh4/croot/pytables_1705614846524/work
 tabulate @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_a301xhcsz1/croot/tabulate_1701354815389/work
