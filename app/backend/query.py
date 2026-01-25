@@ -26,7 +26,7 @@ def connect():
 #if recyclable
 def recyclable(zipcode, material):
     supabase = connect()    #connect to database
-    if not material: return False   #if material is 8-not plastic return not recyclable
+    if material == "": return False   #if material is 8-not plastic return not recyclable
     re_field = material + "_Tons_Recycled"  #field to check for recycling data
 
     #get object ID connected to zipcode
