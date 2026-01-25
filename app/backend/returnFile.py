@@ -1,28 +1,32 @@
 import json
 from predictFunct import *
-from responseNotes import *
+from ResponseNotes import *
 from query import *
 from classify import *
 
 def getReturnPlastic(file, city, state, zipCode):
     typePlastic = plastic_model_predict(file.filename)
-    classifiedPlastic = classify_plastic(typePlastic)
+    material = typePlastic['predicted_class']
+    classifiedPlastic = classify_plastic(material)
 
-    return getReturnTotal(classifiedPlastic, city, state, zipCode)
+    if_confident = get_confidence(typePlastic)
+
+    return getReturnTotal(classifiedPlastic, city, state, zipCode, if_confident)
 
 def getReturnMaterial(file, city, state, zipCode):
     typeOther = material_model_predict(file.filename)
-    classifiedOther = classify_other(typeOther, city, state, zipCode)
+    material = typeOther['predicted_class']
+    classifiedOther = classify_other(material)
 
-    return getReturnTotal(classifiedOther)
+    if_confident = get_confidence(typeOther)
+
+    return getReturnTotal(classifiedOther, city, state, zipCode, if_confident)
     
-def getReturnTotal(material, city, state, zipCode): 
-    # query's connect
-    connect()
+def getReturnTotal(material, city, state, zipCode, if_confident): 
 
     isRecyclable = recyclable(zipCode, material)
-    notes = createNotes((city + ", " + state), material, isRecyclable)
-
+    notes = createNotes((city + ", " + state), material, isRecyclable, if_confident)
+    #ask abt this where to put confidence
     returnData = {
         "isRecyclable" : isRecyclable,
         "notes" : notes

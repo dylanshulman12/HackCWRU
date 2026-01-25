@@ -34,7 +34,7 @@ def generateLink(address):
 
 
 # function that takes info about recyclable and generates short paragraph about why and how to recycle it
-def createNotes(address, material, isRecyclable):
+def createNotes(address, material, isRecyclable, if_confident):
     url = generateLink(address)
 
     # generates a response about how to recycle if it is recyclable
@@ -158,10 +158,13 @@ def createNotes(address, material, isRecyclable):
                 input=("give me a fiew simple recycling instructions for " + material + " bottle based on the info from " + ', '.join(identifiedInfo))
             
             )
-            
+
+            txt = response.output_text
+            if if_confident == False:
+                txt = "!Warning! \nImage contents are unclear. Here is the most likely result:\n" + response.output_text
 
 
-            return response.output_text
+            return txt
 
         except:
             print("runtime error:", url)
@@ -174,8 +177,12 @@ def createNotes(address, material, isRecyclable):
             
             )
             
+            txt = response.output_text
+            if if_confident == False:
+                txt = "!Warning! \nImage contents are unclear. Here is the most likely result:\n" + response.output_text
 
-            return response.output_text
+
+            return txt
     
     else:
 
@@ -187,8 +194,14 @@ def createNotes(address, material, isRecyclable):
             
         )
             
+        txt = response.output_text
+        if if_confident == False:
+            txt = "!Warning! \nImage contents are unclear. Here is the most likely result:\n" + response.output_text
 
-        return response.output_text
+
+        return txt
+    
+
 
 
     
