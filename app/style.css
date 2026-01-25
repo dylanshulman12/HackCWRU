@@ -7,7 +7,12 @@ button,
   font-family: 'Source Sans Pro', sans-serif;
   padding: 6px 18px;
   justify-content: center; 
-  align-items: center;  
+  align-items: center; 
+  
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .page {
