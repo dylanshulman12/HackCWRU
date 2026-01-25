@@ -15,12 +15,13 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-api_key = os.environ.get("OPENAI_API_KEY")
-if not api_key:
-    raise ValueError("OPENAI_API_KEY environment variable not set")
+key = os.environ.get("OPENAI_API_KEY")
+if not key:
+    print("OPENAI_API_KEY environment variable not set")
 
 # Create the client
-client = OpenAI(api_key=api_key)
+key = key.strip()
+client = OpenAI(api_key=key)
 
 
 # extract image from a url
@@ -159,7 +160,7 @@ def createNotes(address, material, isRecyclable, if_confident):
             response = client.responses.create(
                 model="gpt-5-nano",
 
-                input=("give me a fiew simple recycling instructions for " + material + " bottle based on the info from " + ', '.join(identifiedInfo))
+                input=("give me one sentence recycling instructions for " + material + " bottle based on the info from " + ', '.join(identifiedInfo))
             
             )
 
@@ -177,7 +178,7 @@ def createNotes(address, material, isRecyclable, if_confident):
             response = client.responses.create(
                 model="gpt-5-nano",
 
-                input=("give me 2 bullet points on recycling instructions for how to prepare " + material + " bottle based on the info in " + address)
+                input=("give me one sentence recycling instructions for how to prepare " + material + " bottle based on the info in " + address)
             
             )
             
@@ -194,7 +195,7 @@ def createNotes(address, material, isRecyclable, if_confident):
         response = client.responses.create(
             model="gpt-5-nano",
 
-            input=("give me very understandable short paragraph on why" + material + "isn't recyclable, assuming that it isn't recyclable anywhere nearby, and what are some options for reusing it" )
+            input=("give me very understandable one sentence on why" + material + "isn't recyclable, assuming that it isn't recyclable anywhere nearby, and what are some options for reusing it" )
             
         )
             

@@ -28,13 +28,19 @@ def getReturnTotal(material, city, state, zipCode, if_confident):
     isRecyclable = recyclable(zipCode, material)
     notes = createNotes((city + ", " + state), material, isRecyclable, if_confident)
     #ask abt this where to put confidence
+    if isRecyclable:
+        isRecyclable = "This Is Recyclable"
+
+    else:
+        isRecyclable = "This Is Not Recyclable"
+        
     returnData = {
         "ifConfident" : if_confident,
         "isRecyclable" : isRecyclable,
         "notes" : notes
     }
 
-    with open("/src/finalDataReturn.json", 'w') as json_file:
+    with open("../src/finalDataReturn.json", 'w') as json_file:
         finalFile = json.dump(returnData, json_file, indent = 4)
 
     return finalFile
