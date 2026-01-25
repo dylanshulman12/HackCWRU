@@ -32,13 +32,15 @@ export default function Home() {
           body: formData,
         });
         const response = await upload.json();
-        //console.log(response);
+        console.log("image path thing: " + image);
+
+
         
-        const jsonfile = await fetch("http://localhost:8000/api/location?file="+{file}+"&city=Cleveland&state=OH&zipCode=44106")
+        const jsonfile = await fetch("http://localhost:8000/api/plasticGet?file="+{image}+"&city=Cleveland&state=Ohio&zipCode=44106")
 
 
         //change to information page, and get image for display
-        router.push(`/information?image=${encodeURIComponent(image)}&jsonfile=${encodeURIComponent(jsonfile)}`);
+        router.push(`/information?image=${encodeURIComponent(image)}`);
       }
     }
     informationSwap();

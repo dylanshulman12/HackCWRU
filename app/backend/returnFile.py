@@ -5,7 +5,9 @@ from query import *
 from classify import *
 
 def getReturnPlastic(file, city, state, zipCode):
-    typePlastic = plastic_model_predict(file.filename)
+    print(file)
+
+    typePlastic = plastic_model_predict(file)
     material = typePlastic['predicted_class']
     classifiedPlastic = classify_plastic(material)
 
@@ -14,7 +16,7 @@ def getReturnPlastic(file, city, state, zipCode):
     return getReturnTotal(classifiedPlastic, city, state, zipCode, if_confident)
 
 def getReturnMaterial(file, city, state, zipCode):
-    typeOther = material_model_predict(file.filename)
+    typeOther = material_model_predict(file)
     material = typeOther['predicted_class']
     classifiedOther = classify_other(material)
 
@@ -23,7 +25,6 @@ def getReturnMaterial(file, city, state, zipCode):
     return getReturnTotal(classifiedOther, city, state, zipCode, if_confident)
     
 def getReturnTotal(material, city, state, zipCode, if_confident): 
-
     isRecyclable = recyclable(zipCode, material)
     notes = createNotes((city + ", " + state), material, isRecyclable)
     #ask abt this where to put confidence
@@ -33,7 +34,7 @@ def getReturnTotal(material, city, state, zipCode, if_confident):
         "notes" : notes
     }
 
-    with open("finalDataReturn", 'w') as json_file:
+    with open("/src/finalDataReturn.json", 'w') as json_file:
         finalFile = json.dump(returnData, json_file, indent = 4)
 
     return finalFile

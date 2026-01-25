@@ -4,7 +4,7 @@ import shutil
 import os
 from fastapi.middleware.cors import CORSMiddleware
 import json
-#from returnFile import getReturnPlastic
+from returnFile import *
 
 app = FastAPI()
 
@@ -85,14 +85,26 @@ def servePNG(image: str):
 #         data = json.load(f)
 #     return data
 
-@app.get("/api/location")
-def callReturnFile(file, city, state, zipCode):
-    return FileResponse("../src/finalDataReturn.json", media_type= "aplication/json")
+@app.get("/api/plasticGet")
+def callReturnFile(file : str, city, state, zipCode):  
+    #return FileResponse("uploads/" + file, media_type = "image/png")
     
-    result = getReturnPlastic(file, city, state, zipCode)
+    
+    result = getReturnPlastic("uploads/" + file, city, state, zipCode)
     resultPath = os.path.join(UPLOAD_DIR, result)
 
-    return FileResponse(resultPath, media_type = "aplication/json")
+
+    print("hello world")
+    return FileResponse(resultPath, media_type = "application/json")
+
+
+@app.get("/api/materialGet")
+def callReturnFile(file, city, state, zipCode): 
+    print(file) 
+    result = getReturnMaterial(file, city, state, zipCode)
+    resultPath = os.path.join(UPLOAD_DIR, result)
+
+    return FileResponse(resultPath, media_type = "application/json")
 
 # @app.get("/api/location")
 # def serveLocation(location : dict):
