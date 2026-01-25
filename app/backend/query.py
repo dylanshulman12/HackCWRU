@@ -1,16 +1,17 @@
 #search supabase database for if material is recyclable in given zipcode
+from supabase import create_client, Client
 
 #connect to supabase database
 def connect():
-    from supabase import create_client, Client
     supabase_url = ("https://rfpyabaqxqegzqvbgdia.supabase.co")
     supabase_key = ("sb_publishable_I94_wif2B3U8LJFnGHXpGA_jTcEb3no")
     supabase: Client = create_client(supabase_url, supabase_key)
     return supabase
 
-
+#if recyclable
 def recyclable(zipcode, material):
     supabase = connect()    #connect to database
+    if not material: return False   #if material is 8-not plastic return not recyclable
     re_field = material + "_Tons_Recycled"  #field to check for recycling data
 
     #get object ID connected to zipcode
@@ -35,21 +36,13 @@ def recyclable(zipcode, material):
             .in_("OBJECTID", object_ids)
             .execute()
         )
+        #if material has been recycled
+        values = list(pet_response.data[0].values())
+        if values[0] != None: ifrecyclable = True
+        else: ifrecyclable = False
 
-    #if material has been recycled
-    values = list(pet_response.data[0].values())
-    if values[0] != None: ifrecyclable = True
-    else: ifrecyclable = False
+        return ifrecyclable
+    #if zipcode is not valid
+    else: return False
 
-    return ifrecyclable
-
-zipcode = 72315
-print(recyclable(zipcode, "PET_Bottles"))
-print(recyclable(zipcode, "PET_Other_Rigid"))
-print(recyclable(zipcode, "PP"))
-print(recyclable(zipcode, "Paper"))
-print(recyclable(zipcode, "Aluminum"))
-print(recyclable(zipcode, "Glass"))
-print(recyclable(zipcode, "Cardboard_Boxboard"))
-print(recyclable(zipcode, "HDPE_Bottles"))
-print(recyclable(zipcode, "Rigids__3_to_7"))
+    
