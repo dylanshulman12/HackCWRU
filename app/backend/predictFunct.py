@@ -66,7 +66,7 @@ def material_model_predict(image_path):
 
     MATERIALS_THRESHOLD = 0.45
 
-    if confidence > MATERIALS_THREHOLD:
+    if confidence > MATERIALS_THRESHOLD:
         data = {
             "predicted_class": class_names[class_index],
             "confidence": confidence,
@@ -77,7 +77,7 @@ def material_model_predict(image_path):
         }
     else:
          data = {
-            "predicted_class": "We're not sure, but we it might be " +c lass_names[class_index],
+            "predicted_class": "We're not sure, but we think it might be " + class_names[class_index],
             "confidence": confidence,
             "probabilities": {
                 class_names[i]: float(predictions[i])
