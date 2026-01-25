@@ -1,18 +1,17 @@
 #search supabase database for if material is recyclable in given zipcode
 
-from supabase import create_client, Client
+from supabase import create_client
+
 import os
 
 #connect to supabase database
 def connect():
-    supabase_url = ("https://rfpyabaqxqegzqvbgdia.supabase.co")
-    supabase_key = ("sb_publishable_I94_wif2B3U8LJFnGHXpGA_jTcEb3no")
 
-    
-    print("SUPABASE_URL =", repr(os.getenv("SUPABASE_URL")))
-    print("SUPABASE_KEY =", repr(os.getenv("SUPABASE_KEY")))
 
-    supabase: Client = create_client(supabase_url, supabase_key)
+    SUPABASE_URL = os.environ.get("SUPABASE_URL")
+    SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+
+    supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
     return supabase
 
 #if recyclable
