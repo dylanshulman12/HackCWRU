@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { error } from "console";
 
 export default function Home() {
+  let choice = false;
   const [file, setFile] = useState<File | null>(null);
   const [jsonupload, setJSON] = useState<File |null>(null);
   const [location, setLocation] = useState<{
@@ -44,7 +45,7 @@ export default function Home() {
       }
     }
     informationSwap();
-  }, [file]);
+  }, [file]); 
 
   useEffect(() => {
     //get location!
@@ -77,11 +78,13 @@ export default function Home() {
   // }, []);
 
   const handleClick1 = () => {
+    choice = false;
     hiddenFileInput.current.click();
     //const location = await fetch("http://localhost:8000/api/info");
   };
 
   const handleClick2 = () => {
+    let choice = true;
     hiddenFileInput.current.click();
   };
 
