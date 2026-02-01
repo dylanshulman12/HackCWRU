@@ -1,5 +1,5 @@
 {
-    "ifConfident": false,
-    "isRecyclable": "This Is Not Recyclable",
-    "notes": "!Warning! \nImage contents are unclear. Here is the most likely result:\nBecause it\u2019s made from a material that local recyclers can\u2019t process (or it\u2019s contaminated or a mixed material), it isn\u2019t recyclable nearby, but you can reuse it as a storage bin, planter, scoop, organizer vessel, or repurpose it into a craft or art project."
+    "ifConfident": true,
+    "isRecyclable": "This Is Recyclable",
+    "notes": "Rinse, empty, and dry PET bottles, replace the cap or lid, and recycle them through Cleveland\u2019s curbside program or at the Division of Waste Collection (5600 Carnegie Ave) or Ridge Road Transfer Station (3727 Ridge Rd)."
 }

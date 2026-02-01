@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { error } from "console";
 
 export default function Home() {
-  let choice = false;
   const [file, setFile] = useState<File | null>(null);
   const [jsonupload, setJSON] = useState<File |null>(null);
   const [location, setLocation] = useState<{
@@ -82,14 +81,18 @@ export default function Home() {
   //   getInfo()
   // }, []);
 
+  let choice = false;
+
   const handleClick1 = () => {
     choice = false;
+    console.log("File Variable Choice = FALSE")
     hiddenFileInput.current.click();
     //const location = await fetch("http://localhost:8000/api/info");
   };
 
   const handleClick2 = () => {
-    let choice = true;
+    choice = true;
+    console.log("File Variable Choice = TRUE")
     hiddenFileInput.current.click();
   };
 
@@ -132,35 +135,32 @@ export default function Home() {
           </button>
       </div>
       <div className="page"> 
-          <img src="/cats_logo.png" alt="Logo" style={{height : "50%", }}/>
+        <img src="/cats_logo.png" alt="Logo" style={{height : "50%", }}/>
         <div
             style={{
+              display : "flex",
               height: "30vh",
               width: "85vw",
               background: "#414833",
               border: "solid #414833 40px",
               borderRadius: "10px",
               padding: "10px",
-              flex: "row",
+              
               alignContent : "center",
+              justifyContent : "center",
             }}
           >
-          <div>Upload Files</div>
-          {/* <PrintPosition /> */}
-          <div className="button" onClick={handleClick1}>
-            Plastics with a Symbol
-          </div>
-          <br></br>
-          <div className="button" onClick={handleClick2}>
-            Other Materials
-          </div>
-          <input
-            id="file"
-            type="file"
-            ref={hiddenFileInput}
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
+            {/* <PrintPosition /> */}
+            <div className="button" onClick={handleClick1}>
+              Upload Files
+            </div>
+            <input
+              id="file"
+              type="file"
+              ref={hiddenFileInput}
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
           </div>
         </div>
     </>

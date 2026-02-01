@@ -31,6 +31,8 @@ export default function display() {
 
   };
 
+  console.log(data?.isRecyclable)
+
   if (loading) {
     return (
       <div>

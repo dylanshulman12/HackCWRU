@@ -13,6 +13,8 @@ def getReturnPlastic(file, city, state, zipCode):
 
     if_confident = get_confidence(typePlastic)
 
+    print("/n/n RUNING PLASTIC")
+
     return getReturnTotal(classifiedPlastic, city, state, zipCode, if_confident)
 
 def getReturnMaterial(file, city, state, zipCode):
@@ -22,7 +24,13 @@ def getReturnMaterial(file, city, state, zipCode):
 
     if_confident = get_confidence(typeOther)
 
-    return getReturnTotal(classifiedOther, city, state, zipCode, if_confident)
+    print("/n/n RUNING MATERIAL")
+
+    if material == "Plastic" or material == "Rigids__3_to_7":
+        return getReturnPlastic(file, city, state, zipCode)
+    
+    else:
+        return getReturnTotal(classifiedOther, city, state, zipCode, if_confident)
     
 def getReturnTotal(material, city, state, zipCode, if_confident): 
     isRecyclable = recyclable(zipCode, material)
@@ -33,12 +41,14 @@ def getReturnTotal(material, city, state, zipCode, if_confident):
 
     else:
         isRecyclable = "This Is Not Recyclable"
-        
+
     returnData = {
         "ifConfident" : if_confident,
         "isRecyclable" : isRecyclable,
         "notes" : notes
     }
+
+    print("\n\nTESTINGGGG:", isRecyclable, "THE MATERIAL IS:", material)
 
     with open("../src/finalDataReturn.json", 'w') as json_file:
         finalFile = json.dump(returnData, json_file, indent = 4)

@@ -3,7 +3,7 @@
 
 #plastics with resin code
 def classify_plastic(material):
-    if material == "1_polyethylene_pet":
+    if material == "1_polyethylene_PET":
         mat_str = "PET_Bottles"
     elif material == "2_high_density_polyethylene_PE-HD":
         mat_str = "HDPE_Bottles"
