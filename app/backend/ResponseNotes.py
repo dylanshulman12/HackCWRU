@@ -15,9 +15,12 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
+# get the open ai key from the environment
 key = os.environ.get("OPENAI_API_KEY")
-if not key:
-    print("OPENAI_API_KEY environment variable not set")
+
+# print an error
+#if not key:
+    #print("OPENAI_API_KEY environment variable not set")
 
 # Create the client
 key = key.strip()
@@ -40,6 +43,7 @@ def generateLink(address):
 
 # function that takes info about recyclable and generates short paragraph about why and how to recycle it
 def createNotes(address, material, isRecyclable, if_confident):
+    # generate url
     url = generateLink(address)
 
     # generates a response about how to recycle if it is recyclable
