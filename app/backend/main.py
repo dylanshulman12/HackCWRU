@@ -35,19 +35,18 @@ UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.post("/api/upload")
-async def saveFile(file: UploadFile = File(...)):
+async def saveFile(file):
     extension = (".png", ".jpg", ".jpeg", ".heic")
 
-    # if not file.filename.lower().endswith(extension):
-    #     raise HTTPException(status_code=400, detail="Only image files allowed")
+    if not file.filename.lower().endswith(extension):
+        return {"status": "Error: Only image files allowed"}
 
-    fileName : str = file.filename
+    fileName = file.filename
 
     filePath = os.path.join(UPLOAD_DIR, fileName)
-
-    with open(filePath, "wb") as buffer:
-        shutil.copyfileobj(file.file, buffer)
-
+    with open (filePath, 'w'):
+        os.save(file)
+    return {"status": "File Uploaded"}
 
 @app.post("/api/info")
 async def saveJSON(file: UploadFile = File(...)):

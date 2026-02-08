@@ -13,7 +13,8 @@ def getReturnPlastic(file, city, state, zipCode):
 
     if_confident = get_confidence(typePlastic)
 
-    print("/n/n RUNING PLASTIC")
+    print("/n/n RUNNING PLASTIC")
+    
 
     return getReturnTotal(classifiedPlastic, city, state, zipCode, if_confident)
 
@@ -24,7 +25,7 @@ def getReturnMaterial(file, city, state, zipCode):
 
     if_confident = get_confidence(typeOther)
 
-    print("/n/n RUNING MATERIAL")
+    print("/n/n RUNNING MATERIAL")
 
     if material == "Plastic" or material == "Rigids__3_to_7":
         return getReturnPlastic(file, city, state, zipCode)
