@@ -1,6 +1,8 @@
 #take tensor flow output and change it to database fields
 #iterate over dictionary to check confidence of .45, if not available get top 2 and list probabilities, rank "most likely" use info
 
+#eventually delete class, sync database and tensorflow names
+
 #plastics with resin code
 def classify_plastic(material):
     if material == "1_polyethylene_PET":
