@@ -4,13 +4,23 @@ from ResponseNotes import *
 from query import *
 from classify import *
 
+plasticTypes = ["PET_Bottles", "HDPE_Bottles", "PP", "Rigids__3_to_7"]
+
+
+# returns the recyclability and notes for a plastic identified object
 def getReturnPlastic(file, city, state, zipCode):
     print(file)
 
+    # predict type of plastic
     typePlastic = plastic_model_predict(file)
+
+    # get return for the predicted class
     material = typePlastic['predicted_class']
+
+    # get the classification for query
     classifiedPlastic = classify_plastic(material)
 
+    # get the confidence
     if_confident = get_confidence(typePlastic)
 
     print("/n/n RUNNING PLASTIC")
@@ -18,31 +28,48 @@ def getReturnPlastic(file, city, state, zipCode):
 
     return getReturnTotal(classifiedPlastic, city, state, zipCode, if_confident)
 
+# returns the recyclability and notes for a other material
 def getReturnMaterial(file, city, state, zipCode):
+    # tensor flow model predict the material of the item from the picture
     typeOther = material_model_predict(file)
+
+    # finds the predicted class from the return of typeOther (a dictionary)
     material = typeOther['predicted_class']
+
+    # classify for a other material
     classifiedOther = classify_other(material)
 
+    # get the confidence
     if_confident = get_confidence(typeOther)
 
     print("/n/n RUNNING MATERIAL")
 
+    # if it finds plastic run it through the plastic detector
     if material == "Plastic" or material == "Rigids__3_to_7":
-        return getReturnPlastic(file, city, state, zipCode)
+        if classify_plastic(plastic_model_predict(file)) in plasticTypes:
+            return getReturnPlastic(file, city, state, zipCode)
+        
+        else:
+            return getReturnTotal(classifiedOther, city, state, zipCode, if_confident)
     
     else:
         return getReturnTotal(classifiedOther, city, state, zipCode, if_confident)
     
+# returns a json file with if confident, recyclable, and notes data
 def getReturnTotal(material, city, state, zipCode, if_confident): 
     isRecyclable = recyclable(zipCode, material)
+
+    # create the ai note
     notes = createNotes((city + ", " + state), material, isRecyclable, if_confident)
-    #ask abt this where to put confidence
+
+    # note if is recyclable
     if isRecyclable:
         isRecyclable = "This Is Recyclable"
 
     else:
         isRecyclable = "This Is Not Recyclable"
 
+    # return data
     returnData = {
         "ifConfident" : if_confident,
         "isRecyclable" : isRecyclable,
