@@ -43,4 +43,4 @@ next-env.d.ts
 
 **/train/ 
 **/venv/
-
+**/__pycache__/
