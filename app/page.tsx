@@ -27,6 +27,7 @@ export default function Home() {
         const formData = new FormData();
         formData.append("file", file);
 
+        //upload photo to /uploads
         const upload = await fetch("http://localhost:8000/api/upload", {
           method: "POST",
           body: formData,
@@ -54,6 +55,7 @@ export default function Home() {
   useEffect(() => {
     //get location!
     async function getLocation() {
+      //json of the users location
       const data = await fetch("https://ipapi.co/json/");
       const j = await data.json();
       console.log(j);
@@ -83,6 +85,7 @@ export default function Home() {
 
   let choice = false;
 
+  //on "Upload Picture" button click
   const handleClick1 = () => {
     choice = false;
     console.log("File Variable Choice = FALSE")
@@ -90,11 +93,11 @@ export default function Home() {
     //const location = await fetch("http://localhost:8000/api/info");
   };
 
-  const handleClick2 = () => {
-    choice = true;
-    console.log("File Variable Choice = TRUE")
-    hiddenFileInput.current.click();
-  };
+  // const handleClick2 = () => {
+  //   choice = true;
+  //   console.log("File Variable Choice = TRUE")
+  //   hiddenFileInput.current.click();
+  // };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -102,10 +105,12 @@ export default function Home() {
     }
   };
 
+  //Git Click
   const handleGit = () =>{
     router.push("https://github.com/dylanshulman12/HackCWRU")
   }
 
+  //About us Page
   const handleAboutUs = () => {
     router.push('/aboutus')
   }
