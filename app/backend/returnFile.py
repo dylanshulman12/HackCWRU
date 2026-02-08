@@ -44,8 +44,8 @@ def getReturnMaterial(file, city, state, zipCode):
 
     print("/n/n RUNNING MATERIAL")
 
-    if classify_plastic(plastic_model_predict(file)) in plasticTypes:
-            return getReturnPlastic(file, city, state, zipCode)
+    if classify_plastic(plastic_model_predict(file)['predicted_class']) in plasticTypes and plastic_model_predict['confidence'] >= 0.45:
+         return getReturnPlastic(file, city, state, zipCode)
     
     else:
         return getReturnTotal(classifiedOther, city, state, zipCode, if_confident)
