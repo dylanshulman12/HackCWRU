@@ -1,9 +1,8 @@
-#take tensor flow output and change it to database fields
-#iterate over dictionary to check confidence of .45, if not available get top 2 and list probabilities, rank "most likely" use info
-
-#eventually delete class, sync database and tensorflow names
+#take tensor flow output and change it to database fields, ensure confidence
+#eventually delete class, sync database and tensorflow names of fields
 
 #plastics with resin code
+#convert tensor flow text field to database table names
 def classify_plastic(material):
     if material == "1_polyethylene_PET":
         mat_str = "PET_Bottles"
@@ -21,6 +20,7 @@ def classify_plastic(material):
     return mat_str
 
 #other items
+#convert tensor flow text field to database table names
 def classify_other(item):
     if (item == "Metal"):
         mat_str = "Aluminum"
@@ -36,8 +36,9 @@ def classify_other(item):
         mat_str = ""
     return mat_str
 
+#if confidence is over 0.45 LLM is confident in result, return true
 def get_confidence(dict):
-    confidence = dict['confidence']
+    confidence = dict['confidence']     #get confidence field from tensor flow output
     if confidence >= 0.45: return True
     else: return False
     
