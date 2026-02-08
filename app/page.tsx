@@ -25,24 +25,15 @@ export default function Home() {
 
         //send file
         const formData = new FormData();
-        formData.append("file", file);
+        formData.append("content", file);
 
         //upload photo to /uploads
-        const upload = await fetch("/api/upload", {
+        const upload = await fetch("http://127.0.0.1:8000/api/upload", {
           method: "POST",
           body: formData,
         });
         const response = await upload.json();
-        console.log("image path thing: " + image);
-
-
-        if(choice){
-          const jsonfile = await fetch(`/api/plasticGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)          
-        }
-        else{
-          const jsonfile = await fetch(`/api/materialGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)
-
-        }
+        console.log(response);
 
 
         //change to information page, and get image for display

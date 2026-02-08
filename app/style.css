@@ -175,10 +175,14 @@ button,
 
 .image-container {
   position: relative;
-  min-width: 350px;
+  min-width: 20vw;
+  max-width: 40vw;
+  min-height: 20vh;
+  max-height: 40vh;
+  /* min-width: 350px;
   max-width: 350px;
   min-height: 400px;
-  max-height:400px;
+  max-height:400px; */
   aspect-ratio: 3 / 5;
 
   background: #0f0f0f;

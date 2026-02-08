@@ -8,45 +8,34 @@ from returnFile import *
 
 app = FastAPI()
 
-
-
 app.add_middleware(
-
-
     CORSMiddleware,
-
-
-    allow_origins=["*"],  # React app origin
-
-
+    allow_origins=["http://172.20.103.96:3000"],
     allow_credentials=True,
-
-
     allow_methods=["*"],
-
-
     allow_headers=["*"],
-
-
 )
+
 
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.post("/api/upload")
-async def saveFile(file):
+async def saveFile(content: UploadFile = File(...)):
     extension = (".png", ".jpg", ".jpeg", ".heic")
+    try: 
+        if not content.filename.lower().endswith(extension):
+            return {"status": "Error: Only image files allowed"}
+        fileName = content.filename
+        filePath = os.path.join(UPLOAD_DIR, fileName)
+        with open (filePath, 'wb') as file:
+            file.write(await content.read())
 
-    if not file.filename.lower().endswith(extension):
-        return {"status": "Error: Only image files allowed"}
+        return {"status": "File Uploaded"}
 
-    fileName = file.filename
-
-    filePath = os.path.join(UPLOAD_DIR, fileName)
-    with open (filePath, 'w'):
-        os.save(file)
-    return {"status": "File Uploaded"}
+    except Exception as e:
+        return {"status": f"Error: {str(e)}"}
 
 @app.post("/api/info")
 async def saveJSON(file: UploadFile = File(...)):
