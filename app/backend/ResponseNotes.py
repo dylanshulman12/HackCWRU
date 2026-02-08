@@ -168,6 +168,7 @@ def createNotes(address, material, isRecyclable, if_confident):
             
             )
 
+            # add if unconfident message
             txt = response.output_text
             if if_confident == False:
                 txt = "!Warning! \nImage contents are unclear. Here is the most likely result:\n" + response.output_text
@@ -186,6 +187,7 @@ def createNotes(address, material, isRecyclable, if_confident):
             
             )
             
+            # add if unconfident message
             txt = response.output_text
             if if_confident == False:
                 txt = "!Warning! \nImage contents are unclear. Here is the most likely result:\n" + response.output_text
@@ -203,6 +205,7 @@ def createNotes(address, material, isRecyclable, if_confident):
             
         )
             
+        # add if unconfident message
         txt = response.output_text
         if if_confident == False:
             txt = "!Warning! \nImage contents are unclear. Here is the most likely result:\n" + response.output_text
