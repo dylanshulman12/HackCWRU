@@ -35,15 +35,7 @@ export default function Home() {
         const response = await upload.json();
         console.log("image path thing: " + image);
 
-
-        if(choice){
-          const jsonfile = await fetch(`/api/plasticGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)          
-        }
-        else{
-          const jsonfile = await fetch(`/api/materialGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)
-
-        }
-
+        const jsonfile = await fetch(`/api/materialGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)
 
         //change to information page, and get image for display
         router.push(`/information?image=${encodeURIComponent(image)}`);
@@ -85,19 +77,6 @@ export default function Home() {
 
   let choice = false;
 
-  //on "Upload Picture" button click
-  const handleClick1 = () => {
-    choice = false;
-    console.log("File Variable Choice = FALSE")
-    hiddenFileInput.current.click();
-    //const location = await fetch("http://localhost:8000/api/info");
-  };
-
-  // const handleClick2 = () => {
-  //   choice = true;
-  //   console.log("File Variable Choice = TRUE")
-  //   hiddenFileInput.current.click();
-  // };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
