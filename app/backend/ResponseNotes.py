@@ -18,13 +18,12 @@ load_dotenv()
 # get the open ai key from the environment
 key = os.environ.get("OPENAI_API_KEY")
 
+if key: 
+    client = OpenAI(api_key=key.strip())
 # print an error
-#if not key:
-    #print("OPENAI_API_KEY environment variable not set")
-
-# Create the client
-key = key.strip()
-client = OpenAI(api_key=key)
+else:
+    client = None
+    print("OPENAI_API_KEY environment variable not set")
 
 
 # extract image from a url
@@ -43,6 +42,9 @@ def generateLink(address):
 
 # function that takes info about recyclable and generates short paragraph about why and how to recycle it
 def createNotes(address, material, isRecyclable, if_confident):
+    if client is None:
+        return "AI is currently down."
+
     # generate url
     url = generateLink(address)
 
