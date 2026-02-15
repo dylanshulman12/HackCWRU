@@ -54,8 +54,6 @@ def getReturnMaterial(file, city, state, zipCode):
 def getReturnTotal(material, city, state, zipCode, if_confident): 
     isRecyclable = recyclable(zipCode, material)
 
-    # create the ai note
-    notes = createNotes((city + ", " + state), material, isRecyclable, if_confident)
 
     # note if is recyclable
     if isRecyclable:
@@ -64,12 +62,22 @@ def getReturnTotal(material, city, state, zipCode, if_confident):
     else:
         isRecyclable = "This Is Not Recyclable"
 
-    # return data
-    returnData = {
-        "ifConfident" : if_confident,
-        "isRecyclable" : isRecyclable,
-        "notes" : notes
-    }
+        # create the ai note
+    if zipCode == "44106":
+        notes = createNotes(material)
+        # return data
+        returnData = {
+            "ifConfident" : if_confident,
+            "isRecyclable" : isRecyclable,
+            "notes" : notes
+        }
+
+    else:
+        # return data
+        returnData = {
+            "ifConfident" : if_confident,
+            "isRecyclable" : isRecyclable,
+        }
 
     print("\n\nTESTINGGGG:", isRecyclable, "THE MATERIAL IS:", material)
 
