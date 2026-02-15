@@ -15,7 +15,7 @@ export default function Home() {
     city: string;
   } | null>(null);
   // so we can customize button!
-  const hiddenFileInput = useRef(null);
+  const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -89,7 +89,7 @@ export default function Home() {
   const handleClick1 = () => {
     choice = false;
     console.log("File Variable Choice = FALSE")
-    hiddenFileInput.current.click();
+    hiddenFileInput.current?.click();
     //const location = await fetch("http://localhost:8000/api/info");
   };
 
