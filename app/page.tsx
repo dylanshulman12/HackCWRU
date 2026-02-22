@@ -15,7 +15,7 @@ export default function Home() {
     city: string;
   } | null>(null);
   // so we can customize button!
-  const hiddenFileInput = useRef(null);
+  const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -76,7 +76,6 @@ export default function Home() {
   // }, []);
 
   let choice = false;
-
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
