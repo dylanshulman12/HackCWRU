@@ -26,13 +26,6 @@ def createNotes(material):
 
     else:
         txt = "Unidentified Obj"
-        
 
     return txt
-        
-
-
-    
-
-
 
