@@ -5,6 +5,7 @@ import os
 from fastapi.middleware.cors import CORSMiddleware
 import json
 from returnFile import *
+from PIL import Image
 
 app = FastAPI()
 
@@ -36,16 +37,22 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.post("/api/upload")
 async def saveFile(file):
+    print("HELLO")
+
     extension = (".png", ".jpg", ".jpeg", ".heic")
 
     if not file.filename.lower().endswith(extension):
         return {"status": "Error: Only image files allowed"}
 
+
+    
+
     fileName = file.filename
 
     filePath = os.path.join(UPLOAD_DIR, fileName)
-    with open (filePath, 'w'):
-        os.save(file)
+    img = Image.open(fileName)
+    img.save(filePath, format="PNG")
+
     return {"status": "File Uploaded"}
 
 @app.post("/api/info")
@@ -59,7 +66,7 @@ async def saveJSON(file: UploadFile = File(...)):
 
 @app.get("/api/returnInfo")
 def serveJSON(file : str):
-    return "Hello"
+    # return "Hello"
     filePath = os.path.join(UPLOAD_DIR, file)
 
     if not os.path.exists(filePath):
