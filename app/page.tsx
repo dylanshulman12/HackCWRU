@@ -8,12 +8,19 @@ import { error } from "console";
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
   const [jsonupload, setJSON] = useState<File |null>(null);
-  const [location, setLocation] = useState<{
-    latitude: number;
-    longitude: number;
-    postal: number;
-    city: string;
-  } | null>(null);
+  //FOR TESTING DEFAULTING TO CLEVELAND
+  // const [location, setLocation] = useState<{
+  //   latitude: number;
+  //   longitude: number;
+  //   postal: number;
+  //   city: string;
+  // } | null>(null);
+  const location = {
+    latitude: 41.50743811407195, 
+    longitude: -81.6095874, 
+    postal: 44106, 
+    city: "Cleveland"
+  };
   // so we can customize button!
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
@@ -59,16 +66,20 @@ export default function Home() {
     //get location!
     async function getLocation() {
       //json of the users location
-      const data = await fetch("https://ipapi.co/json/");
-      const j = await data.json();
-      console.log(j);
+      
+      //FOR TESTING WE ARE DEFAULTING TO CLEVELAND
+      // const data = await fetch("https://ipapi.co/json/");
+      // const j = await data.json();
+      // console.log(j);
 
-      setLocation({
-        latitude: j.latitude,
-        longitude: j.longitude,
-        postal: j.postal,
-        city: j.city,
-      });
+      // setLocation({
+      //   latitude: j.latitude,
+      //   longitude: j.longitude,
+      //   postal: j.postal,
+      //   city: j.city,
+      // });
+
+      
     }
 
     getLocation();

@@ -37,21 +37,13 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.post("/api/upload")
 async def saveFile(file: UploadFile = File(...)):
-<<<<<<< HEAD
-    print("HELLO")
-
-=======
->>>>>>> e1f2a96cd3fecab99df698557e13b9b19ee0fed8
     extension = (".png", ".jpg", ".jpeg", ".heic")
 
     if not file.filename.lower().endswith(extension):
         return {"status": "Error: Only image files allowed"}
 
 
-    
-
     fileName = file.filename
-    img = Image.open(fileName)
 
     filePath = os.path.join(UPLOAD_DIR, fileName)
     img = Image.open(file.file)
