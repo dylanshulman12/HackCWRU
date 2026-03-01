@@ -5,6 +5,7 @@ import os
 from fastapi.middleware.cors import CORSMiddleware
 import json
 from returnFile import *
+from PIL import Image
 
 app = FastAPI()
 
@@ -41,6 +42,8 @@ async def saveFile(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(extension):
         return {"status": "Error: Only image files allowed"}
 
+    fileName = file.filename
+    img = Image.open(fileName)
 
     filePath = os.path.join(UPLOAD_DIR, file.filename)
     with open (filePath, 'wb') as buffer:
