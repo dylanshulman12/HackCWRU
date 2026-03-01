@@ -134,7 +134,7 @@ export default function Home() {
             }}
           >
             {/* <PrintPosition /> */}
-            <div className="button" onClick={handleClick1}>
+            <div className="button">
               Upload Files
             </div>
             <input
