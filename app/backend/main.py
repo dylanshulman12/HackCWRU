@@ -42,12 +42,13 @@ async def saveFile(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(extension):
         return {"status": "Error: Only image files allowed"}
 
+
     fileName = file.filename
-    img = Image.open(fileName)
 
     filePath = os.path.join(UPLOAD_DIR, fileName)
-    with open (filePath, 'w'):
-        os.save(file)
+    img = Image.open(file.file)
+    img.save(filePath, format="PNG")
+
     return {"status": "File Uploaded"}
 
 @app.post("/api/info")
@@ -61,7 +62,7 @@ async def saveJSON(file: UploadFile = File(...)):
 
 @app.get("/api/returnInfo")
 def serveJSON(file : str):
-    return "Hello"
+    # return "Hello"
     filePath = os.path.join(UPLOAD_DIR, file)
 
     if not os.path.exists(filePath):
