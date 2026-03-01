@@ -44,7 +44,7 @@ def getReturnMaterial(file, city, state, zipCode):
 
     print("/n/n RUNNING MATERIAL")
 
-    if classify_plastic(plastic_model_predict(file)['predicted_class']) in plasticTypes and plastic_model_predict['confidence'] >= 0.45:
+    if classify_plastic(plastic_model_predict(file)['predicted_class']) in plasticTypes and plastic_model_predict(file)['confidence'] >= 0.45:
          return getReturnPlastic(file, city, state, zipCode)
     
     else:
@@ -82,9 +82,9 @@ def getReturnTotal(material, city, state, zipCode, if_confident):
     print("\n\nTESTINGGGG:", isRecyclable, "THE MATERIAL IS:", material)
 
     with open("../src/finalDataReturn.json", 'w') as json_file:
-        finalFile = json.dump(returnData, json_file, indent = 4)
+        json.dump(returnData, json_file, indent = 4)
 
-    return finalFile
+    return returnData
     
 
 

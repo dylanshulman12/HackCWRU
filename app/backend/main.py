@@ -42,12 +42,13 @@ async def saveFile(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(extension):
         return {"status": "Error: Only image files allowed"}
 
-    fileName = file.filename
-    img = Image.open(fileName)
-
     filePath = os.path.join(UPLOAD_DIR, file.filename)
-    with open (filePath, 'wb') as buffer:
+
+    with open(filePath, 'wb') as buffer:
         shutil.copyfileobj(file.file, buffer)
+
+    img = Image.open(filePath)
+
     return {"status": "File Uploaded"}
 
 @app.post("/api/info")
@@ -96,7 +97,6 @@ def callReturnFile(file : str, city, state, zipCode):
 @app.get("/api/materialGet")
 def callReturnFile(file, city, state, zipCode): 
     result = getReturnMaterial("uploads/" + file, city, state, zipCode)
-
 
 # @app.get("/api/location")
 # def serveLocation(location : dict):
