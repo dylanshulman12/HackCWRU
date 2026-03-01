@@ -36,7 +36,7 @@ UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.post("/api/upload")
-async def saveFile(file):
+async def saveFile(file: UploadFile = File(...)):
     print("HELLO")
 
     extension = (".png", ".jpg", ".jpeg", ".heic")
@@ -50,7 +50,7 @@ async def saveFile(file):
     fileName = file.filename
 
     filePath = os.path.join(UPLOAD_DIR, fileName)
-    img = Image.open(fileName)
+    img = Image.open(file.file)
     img.save(filePath, format="PNG")
 
     return {"status": "File Uploaded"}
