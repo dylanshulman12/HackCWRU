@@ -32,18 +32,19 @@ export default function Home() {
           method: "POST",
           body: formData,
         });
-        // const response = await upload.json();
-        // console.log("image path thing: " + response);
+        const response = await upload.json();
+        console.log("image path thing: " + response);
 
 
         const jsonfile = await fetch(`/api/plasticGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)          
 
-        // if(choice){
-        // }
-        // else{
-        //   const jsonfile = await fetch(`/api/materialGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)
+        if(choice){
+          const jsonfile = await fetch(`/api/plasticGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)          
+        }
+        else{
+          const jsonfile = await fetch(`/api/materialGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`)
 
-        // }
+        }
 
 
 
