@@ -42,12 +42,11 @@ async def saveFile(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(extension):
         return {"status": "Error: Only image files allowed"}
 
-    filePath = os.path.join(UPLOAD_DIR, file.filename)
+    fileName = file.filename
 
-    with open(filePath, 'wb') as buffer:
-        shutil.copyfileobj(file.file, buffer)
-
-    img = Image.open(filePath)
+    filePath = os.path.join(UPLOAD_DIR, fileName)
+    img = Image.open(file.file)
+    img.save(filePath, format="PNG")
 
     return {"status": "File Uploaded"}
 
@@ -62,7 +61,7 @@ async def saveJSON(file: UploadFile = File(...)):
 
 @app.get("/api/returnInfo")
 def serveJSON(file : str):
-    return "Hello"
+    # return "Hello"
     filePath = os.path.join(UPLOAD_DIR, file)
 
     if not os.path.exists(filePath):
