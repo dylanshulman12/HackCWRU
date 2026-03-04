@@ -30,6 +30,7 @@ def getReturnPlastic(file, city, state, zipCode):
 
 # returns the recyclability and notes for a other material
 def getReturnMaterial(file, city, state, zipCode):
+    print("running 2")
     # tensor flow model predict the material of the item from the picture
     typeOther = material_model_predict(file)
 
@@ -43,8 +44,9 @@ def getReturnMaterial(file, city, state, zipCode):
     if_confident = get_confidence(typeOther)
 
     print("/n/n RUNNING MATERIAL")
+    plastic_model = plastic_model_predict(file)
 
-    if classify_plastic(plastic_model_predict(file)['predicted_class']) in plasticTypes and plastic_model_predict['confidence'] >= 0.45:
+    if classify_plastic(plastic_model['predicted_class']) in plasticTypes and plastic_model['confidence'] >= 0.45:
          return getReturnPlastic(file, city, state, zipCode)
     
     else:
