@@ -3,6 +3,10 @@
 from supabase import create_client
 import os
 
+from dotenv import load_dotenv
+
+
+
 #connect to supabase database
 def connect():
 
@@ -10,9 +14,15 @@ def connect():
     SUPABASE_URL = os.environ.get("SUPABASE_URL")
     SUPABASE_KEY = os.environ.get("SUPABASE_KEY_ANON")
 
+    print("SUPABASE URL", SUPABASE_URL)
+
     #catch error if key or url not found
     if not SUPABASE_URL or not SUPABASE_KEY:
         raise ValueError("SUPABASE_URL and SUPABASE_KEY must be set in environment variables.")
+
+    #load env file
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    load_dotenv(os.path.join(BASE_DIR, ".env"))
 
     #create supabase client to connect to database
     supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
