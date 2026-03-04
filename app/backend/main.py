@@ -6,6 +6,13 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 from returnFile import *
 from PIL import Image
+from dotenv import load_dotenv
+
+print("RUNNING \n")
+
+# load the environment file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = FastAPI()
 
@@ -42,7 +49,6 @@ async def saveFile(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(extension):
         return {"status": "Error: Only image files allowed"}
 
-
     fileName = file.filename
 
     filePath = os.path.join(UPLOAD_DIR, fileName)
@@ -68,6 +74,8 @@ def serveJSON(file : str):
     if not os.path.exists(filePath):
         return {"status": filePath}
     
+    return {"status": "error"}
+    
     
 
 
@@ -89,14 +97,16 @@ def servePNG(image: str):
 
 @app.get("/api/plasticGet")
 def callReturnFile(file : str, city, state, zipCode):  
-    result = getReturnPlastic("uploads/" + file, city, state, zipCode)
+    UPLOAD_DIR = "uploads/"
+    return getReturnPlastic(os.path.join(UPLOAD_DIR, file), city, state, zipCode)
 
 
 
 
 @app.get("/api/materialGet")
 def callReturnFile(file, city, state, zipCode): 
-    result = getReturnMaterial("uploads/" + file, city, state, zipCode)
+    UPLOAD_DIR = "uploads/"
+    return getReturnMaterial(os.path.join(UPLOAD_DIR, file), city, state, zipCode)
 
 
 # @app.get("/api/location")
@@ -107,5 +117,3 @@ def callReturnFile(file, city, state, zipCode):
 #     return {"status", "Success"}
 
  
-
-
