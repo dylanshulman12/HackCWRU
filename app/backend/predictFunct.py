@@ -4,13 +4,27 @@ import json
 from PIL import Image 
 import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+print("Loading ML models...")
+
+plastic_model = tf.keras.models.load_model(
+    os.path.join(BASE_DIR, "plastic_classifier_model.keras")
+)
+
+material_model = tf.keras.models.load_model(
+    os.path.join(BASE_DIR, "material_classifier_model.keras")
+)
+
+print("Models loaded.")
+
 '''
 Input: File Name for Image (String)
 Output: Dictionary containing information about plastic type, confidence level, 
 array containing probabilities of the others (JSON)
 '''
 def plastic_model_predict(image_path):
-    model = tf.keras.models.load_model("plastic_classifier_model.keras")
+    model = plastic_model
 
     with open("class_names_plastics.json", "r") as f: 
         class_names = json.load(f)
@@ -57,8 +71,8 @@ Output: Dictionary containing information about material, confidence level,
 array containing probabilities of the others (JSON)
 '''
 def material_model_predict(image_path):
-    model = tf.keras.models.load_model("material_classifier_model.keras")
-
+    model = material_model
+    
     with open("class_names_materials.json", "r") as f: 
         class_names = json.load(f)
 
