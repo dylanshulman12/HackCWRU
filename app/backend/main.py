@@ -6,6 +6,13 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 from returnFile import *
 from PIL import Image
+from dotenv import load_dotenv
+
+print("RUNNING \n")
+
+# load the environment file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 app = FastAPI()
 
@@ -42,13 +49,13 @@ async def saveFile(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(extension):
         return {"status": "Error: Only image files allowed"}
 
-    filePath = os.path.join(UPLOAD_DIR, file.filename)
+    fileName = file.filename
 
-    with open(filePath, 'wb') as buffer:
-        shutil.copyfileobj(file.file, buffer)
+    filePath = os.path.join(UPLOAD_DIR, fileName)
+    img = Image.open(file.file)
+    img.save(filePath, format="PNG")
 
-    img = Image.open(filePath)
-
+>>>>>>> c3ae5d19f8736e340ce03387bc5eb44f930c6718
     return {"status": "File Uploaded"}
 
 @app.post("/api/info")
@@ -62,11 +69,13 @@ async def saveJSON(file: UploadFile = File(...)):
 
 @app.get("/api/returnInfo")
 def serveJSON(file : str):
-    return "Hello"
+    # return "Hello"
     filePath = os.path.join(UPLOAD_DIR, file)
 
     if not os.path.exists(filePath):
         return {"status": filePath}
+    
+    return {"status": "error"}
     
     
 
@@ -89,14 +98,16 @@ def servePNG(image: str):
 
 @app.get("/api/plasticGet")
 def callReturnFile(file : str, city, state, zipCode):  
-    result = getReturnPlastic("uploads/" + file, city, state, zipCode)
+    UPLOAD_DIR = "uploads/"
+    return getReturnPlastic(os.path.join(UPLOAD_DIR, file), city, state, zipCode)
 
 
 
 
 @app.get("/api/materialGet")
 def callReturnFile(file, city, state, zipCode): 
-    result = getReturnMaterial("uploads/" + file, city, state, zipCode)
+    UPLOAD_DIR = "uploads/"
+    return getReturnMaterial(os.path.join(UPLOAD_DIR, file), city, state, zipCode)
 
 # @app.get("/api/location")
 # def serveLocation(location : dict):
@@ -106,5 +117,3 @@ def callReturnFile(file, city, state, zipCode):
 #     return {"status", "Success"}
 
  
-
-

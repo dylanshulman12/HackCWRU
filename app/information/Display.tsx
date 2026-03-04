@@ -12,6 +12,7 @@ import data from "../src/finalDataReturn.json";
 export default function display() {
   const searchParams = useSearchParams();
   const image = searchParams.get("image") ?? "";
+  console.log(image);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   //object still undefined... Have to specify type
@@ -64,7 +65,7 @@ export default function display() {
             <div className="info-container">
               <div className="image-container">
                 <img
-                  src={`/api/files?image=${encodeURIComponent(image)}`}
+                  src={`http://localhost:8000/api/files?image=${encodeURIComponent(image)}`}
                 />
               </div>
               <div
