@@ -1,5 +1,5 @@
 {
-    "ifConfident": true,
-    "isRecyclable": "This Is Recyclable",
-    "notes": "Please flatten the cardboard and recycle unless it has food or greese on it. Also don't recycle frozen food boxes."
+    "ifConfident": false,
+    "isRecyclable": "This Is Not Recyclable",
+    "notes": "Unidentified Obj"
 }

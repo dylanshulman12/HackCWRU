@@ -83,9 +83,6 @@ def getReturnTotal(material, city, state, zipCode, if_confident):
 
     print("\n\nTESTINGGGG:", isRecyclable, "THE MATERIAL IS:", material)
 
-    with open("../src/finalDataReturn.json", 'w') as json_file:
-        json.dump(returnData, json_file, indent = 4)
-
     return returnData
     
 
