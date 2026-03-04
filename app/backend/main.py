@@ -55,7 +55,6 @@ async def saveFile(file: UploadFile = File(...)):
     img = Image.open(file.file)
     img.save(filePath, format="PNG")
 
->>>>>>> c3ae5d19f8736e340ce03387bc5eb44f930c6718
     return {"status": "File Uploaded"}
 
 @app.post("/api/info")
