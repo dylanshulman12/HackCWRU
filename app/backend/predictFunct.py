@@ -54,7 +54,7 @@ def plastic_model_predict(image_path):
         
     else:
         data = {
-            "predicted_class": "We're not sure, but it might be " + class_names[class_index],
+            "predicted_class": class_names[class_index], # not sure
             "confidence": confidence,
             "probabilities": {
                 class_names[i]: float(predictions[i])
@@ -100,7 +100,7 @@ def material_model_predict(image_path):
         }
     else:
          data = {
-            "predicted_class": "We're not sure, but we think it might be " + class_names[class_index],
+            "predicted_class": class_names[class_index], # not sure
             "confidence": confidence,
             "probabilities": {
                 class_names[i]: float(predictions[i])
