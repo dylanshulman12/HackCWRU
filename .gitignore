@@ -13,6 +13,7 @@
 
 # testing
 /coverage
+next.config.ts
 
 # next.js
 /.next/

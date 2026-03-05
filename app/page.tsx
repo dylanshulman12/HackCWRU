@@ -132,8 +132,8 @@ export default function Home() {
               display : "flex",
               height: "30vh",
               width: "85vw",
-              background: "#414833",
-              border: "solid #414833 40px",
+              background: "#003071", //change back to green if needed
+              border: "solid #003071 40px",
               borderRadius: "10px",
               padding: "10px",
               
