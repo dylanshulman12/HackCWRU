@@ -1,5 +1,5 @@
 {
     "ifConfident": true,
-    "isRecyclable": "This Is Recyclable",
-    "notes": "Please don't recycle drinking glasses, window glass, lab glass, pyrex, ceramic dishes, or broken glass"
+    "isRecyclable": "Unless Notes Specify Otherwise, This Is Recyclable",
+    "notes": "Please rinse the item and replace the lid to recycle!"
 }

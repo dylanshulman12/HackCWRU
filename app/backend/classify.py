@@ -32,8 +32,6 @@ def classify_other(item):
         mat_str = "Glass"
     elif (item == "Paper"):
         mat_str = "Paper"
-    elif (item == "Trash"):
-        mat_str = "Trash"
     else:
         mat_str = ""
     return mat_str

@@ -69,7 +69,7 @@ def getReturnTotal(material, city, state, zipCode, if_confident):
 
     # note if is recyclable
     if isRecyclable:
-        isRecyclable = "This Is Recyclable"
+        isRecyclable = "Unless Notes Specify Otherwise, This Is Recyclable"
 
     else:
         isRecyclable = "This Is Not Recyclable"
