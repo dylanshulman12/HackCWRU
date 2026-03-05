@@ -1,0 +1,31 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+⨯ Failed to load next.config.ts, see more info here https://nextjs.org/docs/messages/next-config-error
+[Error:   × Expected '=>', got '('
+    ╭─[12:1]
+  9 │   ],
+ 10 │ };
+ 11 │
+ 12 │ async rewrites() {
+    ·               ─
+ 13 │   return [
+ 14 │     {
+ 15 │       source: "/api/:path*",
+    ╰────
+
+
+Caused by:
+    Syntax Error] {
+  code: 'GenericFailure'
+}
+  /* config options here */
+  reactStrictMode: true,
+  allowedDevOrigins: [
+    'http://192.168.122.1:3000',   // the origin that triggered the warning
+    'http://localhost:3000'        // optional: your local browser
+  ],
+};
+
+export default nextConfig;

@@ -112,7 +112,6 @@ def callReturnFile(file, city, state, zipCode):
     UPLOAD_DIR = "uploads/"
     return getReturnMaterial(os.path.join(UPLOAD_DIR, file), city, state, zipCode)
 
-
 # @app.get("/api/location")
 # def serveLocation(location : dict):
 #     with open("location.json", "w") as f:

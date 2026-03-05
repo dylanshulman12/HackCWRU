@@ -35,7 +35,7 @@ export default function Home() {
         formData.append("file", file);
 
         //upload photo to /uploads
-        const upload = await fetch("http://localhost:8000/api/upload", {
+        const upload = await fetch("/api/upload", {
           method: "POST",
           body: formData,
         });
@@ -43,7 +43,7 @@ export default function Home() {
         console.log("image path thing: " + response);       
 
         // always runs material get
-        const jsonfile = await fetch(`http://localhost:8000/api/materialGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`);
+        const jsonfile = await fetch(`/api/materialGet?file=${encodeURIComponent(image)}&city=Cleveland&state=Ohio&zipCode=44106`);
   
         console.log("image processed");
 
@@ -82,7 +82,7 @@ export default function Home() {
   const handleClick1 = () => {
     console.log("File Variable Choice = FALSE")
     hiddenFileInput.current?.click();
-    //const location = await fetch("http://localhost:8000/api/info");
+    //const location = await fetch("/api/info");
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
