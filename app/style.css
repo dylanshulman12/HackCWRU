@@ -1,4 +1,4 @@
-button,
+/* button,
 
 .button {
   display : "flex";
@@ -151,6 +151,7 @@ button,
     0 4px 8px rgba(0, 0, 0, 0.45),
     inset 0 0 0 1px rgba(255, 255, 255, 0.06);
   overflow:auto;
+  padding: 10px;
 }
 
 .text-container {
@@ -167,6 +168,7 @@ button,
     0 4px 8px rgba(0, 0, 0, 0.45),
     inset 0 0 0 1px rgba(255, 255, 255, 0.06);
   overflow:auto;
+  padding: 10px;
 }
 
 
@@ -175,10 +177,268 @@ button,
 
 .image-container {
   position: relative;
-  min-width: 350px;
-  max-width: 350px;
-  min-height: 400px;
-  max-height:400px;
+  min-width: 25vw;
+  max-width: 25vw;
+  min-height: 55vh;
+  max-height: 55vh;
+  aspect-ratio: 3 / 5;
+
+  background: #0f0f0f;
+  border-radius: 12px;
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* use contain if you want letterboxing *
+  display: block;
+}
+
+
+.basic-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loading / fallback / empty states *
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Example modifiers
+button:hover,
+.button:hover {
+  color: #ff5252;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+button.selected,
+.button.selected {
+  color: #ffd700;
+  background-color: rgba(255, 255, 255, 0.05);
+} 
+*/
+
+
+
+/* unused *
+.collection-item {
+  margin: 5px 0;
+}
+
+/* Collection section *
+.collection-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.media-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 90vw;
+}
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF */
+button,
+
+.button {
+  display : "flex";
+  width: 250px;
+  height: 50px;
+  background-color: #D3D3D3;
+  border-radius: 5px;
+  font-size: 20px;
+  color: rgb(20, 8, 0);
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 6px 18px;
+  text-align: center; 
+  
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: whitesmoke;
+  height: 90vh;
+  width: 100vw;
+
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #003071;
+  height: 100vh;
+
+}
+
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #003071;
+    height: 10%;
+    width: 100%;
+}
+
+.top-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: #003071;
+    height: 10%;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.backbutton {
+    background-color: transparent;
+    border-radius: 20px;
+    font-size: 20px;
+    fill: black;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 6px 18px;
+    justify-content: center; 
+    align-items: center;  
+    height: 50px;
+    width: 100px;
+}
+
+
+.icon {
+  color: black;
+  width: 64px;
+  height: 64px;
+  background-color: transparent;
+  filter: invert(95%); 
+}
+
+
+.icon:hover {
+  filter: invert(82%) sepia(21%) saturate(523%) hue-rotate(166deg) brightness(95%) contrast(95%);
+  color: #F5F5F5; 
+}
+
+.backbutton:hover {
+    color: #D3D3D3
+}
+
+.infobutton {
+    background-color:transparent;
+    border-radius: 20px;
+    font-size: 20px;
+    color: black;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 6px 18px;
+    justify-content: center; 
+    align-items: center;  
+    height: 50px;
+    width: 100px; 
+}
+
+.infobutton:hover {
+    color: #D3D3D3
+}
+
+.github {
+    background-color:transparent;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 6px 18px;
+    justify-content: center; 
+    align-items: center;  
+    height: 50px;
+    width: 100px; 
+}
+
+.github:hover {
+    color: #D3D3D3
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: whitesmoke;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  padding: 50px
+
+
+}
+
+.status-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #D3D3D3;
+  height: 10vh;
+  width: 100%;
+  border: solid black 0px;
+  border-radius: 5px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  overflow:auto;
+  padding: 10px;
+  color: black;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #D3D3D3;
+  height: 30vh;
+  width: 100%;
+  border: solid black 0px;
+  border-radius: 5px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  overflow:auto;
+  padding: 10px;
+  color: black;
+}
+
+
+
+
+
+.image-container {
+  position: relative;
+  min-width: 25vw;
+  max-width: 25vw;
+  min-height: 55vh;
+  max-height: 55vh;
   aspect-ratio: 3 / 5;
 
   background: #0f0f0f;
