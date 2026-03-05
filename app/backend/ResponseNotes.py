@@ -5,7 +5,7 @@ def createNotes(material):
     elif material == "PP":
         txt = "Because of food contamination please don't recycle yogurt tubs, butter tubs, or take-out containers!"
 
-    elif material == "Rigids__3_to_7":
+    elif material == "Rigids__3_to_7" or material == "HDPE_Bottles":
         txt = "If your plastic item has touched food please don't recycle it unless it was a drink container and in " \
         "that case you can rinse the bottle and replace the lid to recycle! Also never recycle styrofoam please!" \
         
@@ -23,6 +23,9 @@ def createNotes(material):
     elif material == "Paper":
         txt = "Please don't recycle shredded paper, tissue or paper towels, paper coffee cups, waxed paper, or any paper " \
         "with foil decorations"
+
+    elif material == "Trash":
+        txt = "These items are never recyclable, sorry"
 
     else:
         txt = "Unidentified Obj"
