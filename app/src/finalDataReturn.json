@@ -1,5 +1,5 @@
 {
-    "ifConfident": false,
-    "isRecyclable": "This Is Not Recyclable",
-    "notes": "Unidentified Obj"
+    "ifConfident": true,
+    "isRecyclable": "Unless Notes Specify Otherwise, This Is Recyclable",
+    "notes": "Please rinse the item and replace the lid to recycle!"
 }
