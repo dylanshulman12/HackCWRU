@@ -7,6 +7,7 @@ import json
 from returnFile import *
 from PIL import Image
 from dotenv import load_dotenv
+import uuid 
 
 print("RUNNING \n")
 
@@ -116,3 +117,12 @@ def callReturnFile(file, city, state, zipCode):
 #     return {"status", "Success"}
 
  
+@app.middleware("http")
+async def add_user_id(request: Request, call_next):
+    response = await call_next(request)
+
+    if "user_id" not in request.cookies:
+        user_id = str(uuid.uuid4())
+        response.set_cookie(key = "user_id", value = user_id, htpponly = True)
+
+    return response
