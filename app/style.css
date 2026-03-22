@@ -1,257 +1,3 @@
-/* button,
-
-.button {
-  display : "flex";
-  width: 250px;
-  height: 50px;
-  background-color:rgb(170, 171, 160);
-  border-radius: 5px;
-  font-size: 20px;
-  color: rgb(20, 8, 0);
-  font-family: 'Source Sans Pro', sans-serif;
-  padding: 6px 18px;
-  text-align: center; 
-  
-}
-
-.button:hover {
-  cursor: pointer;
-}
-
-.page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #c2c5aa;
-  height: 90vh;
-  width: 100vw;
-
-}
-
-.main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #07351b;
-  height: 100vh;
-
-}
-
-
-.top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background: #414833;
-    height: 10%;
-    width: 100%;
-}
-
-.top-main{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background: #414833;
-    height: 10%;
-    width: 100%;
-    justify-content: flex-end;
-}
-
-.backbutton {
-    background-color: transparent;
-    border-radius: 20px;
-    font-size: 20px;
-    fill: black;
-    font-family: 'Source Sans Pro', sans-serif;
-    padding: 6px 18px;
-    justify-content: center; 
-    align-items: center;  
-    height: 50px;
-    width: 100px;
-}
-
-
-.icon {
-  color: black;
-  width: 64px;
-  height: 64px;
-  background-color: transparent;
-}
-
-
-.icon:hover {
-   color: #a7c957;
-   filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(100deg);}
-
-.backbutton:hover {
-    color: #a7c957
-}
-
-.infobutton {
-    background-color:transparent;
-    border-radius: 20px;
-    font-size: 20px;
-    color: white;
-    font-family: 'Source Sans Pro', sans-serif;
-    padding: 6px 18px;
-    justify-content: center; 
-    align-items: center;  
-    height: 50px;
-    width: 100px; 
-}
-
-.infobutton:hover {
-    color: #a7c957
-}
-
-.github {
-    background-color:transparent;
-    border-radius: 20px;
-    font-size: 20px;
-    color: white;
-    font-family: 'Source Sans Pro', sans-serif;
-    padding: 6px 18px;
-    justify-content: center; 
-    align-items: center;  
-    height: 50px;
-    width: 100px; 
-}
-
-.github:hover {
-    color: #a7c957
-}
-
-.info-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background: #fefae0;
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-  padding: 50px
-
-
-}
-
-.status-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #a7c957;
-  height: 20%;
-  width: 100%;
-  border: solid black 0px;
-  border-radius: 5px;
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  overflow:auto;
-  padding: 10px;
-}
-
-.text-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #a7c957;
-  height: 70%;
-  width: 100%;
-  border: solid black 0px;
-  border-radius: 5px;
-  box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  overflow:auto;
-  padding: 10px;
-}
-
-
-
-
-
-.image-container {
-  position: relative;
-  min-width: 25vw;
-  max-width: 25vw;
-  min-height: 55vh;
-  max-height: 55vh;
-  aspect-ratio: 3 / 5;
-
-  background: #0f0f0f;
-  border-radius: 12px;
-  overflow: hidden;
-
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.45),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* use contain if you want letterboxing *
-  display: block;
-}
-
-
-.basic-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Loading / fallback / empty states *
-.centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Example modifiers
-button:hover,
-.button:hover {
-  color: #ff5252;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-button.selected,
-.button.selected {
-  color: #ffd700;
-  background-color: rgba(255, 255, 255, 0.05);
-} 
-*/
-
-
-
-/* unused *
-.collection-item {
-  margin: 5px 0;
-}
-
-/* Collection section *
-.collection-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.media-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  width: 90vw;
-}
-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF */
 button,
 
 .button {
@@ -450,6 +196,7 @@ button,
     inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
 }
 
 .image-container img {
@@ -508,4 +255,39 @@ button.selected,
   flex-wrap: wrap;
   gap: 10px;
   width: 90vw;
+}
+
+.border {
+  height: 75vh;
+  width: 85vw;
+  background: #003071;
+  border: solid #003071 40px;
+  border-radius: 10px;
+}
+
+@media (max-width: 760px){
+  .info-container{
+    flex-direction: column;
+    padding: 20px; /* was 50px */
+    gap: 20px;
+  }
+
+  .image-container {
+    min-width: 60vw;
+    max-width: 60vw;
+    min-height: auto;
+    max-height: none;
+  
+    object-fit: cover;
+  }
+
+  .text-container {
+    height: auto;
+    min-height: 20vh;
+  }
+
+  .status-container {
+    height: auto;
+    min-height: 10vh;
+  }
 }

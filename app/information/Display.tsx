@@ -88,15 +88,7 @@ export default function Display() {
       </div>
 
       <div className="page">
-        <div
-          style={{
-            height: "75vh",
-            width: "85vw",
-            background: "#003071", //change back to green if needed
-            border: "solid #003071 40px",
-            borderRadius: "10px",
-          }}
-        >
+        <div className="border">
           <div className="info-container">
             <div className="image-container">
               <img src={`/localhost:8000/api/files?image=${encodeURIComponent(image)}`} />
