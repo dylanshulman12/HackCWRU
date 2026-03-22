@@ -92,14 +92,14 @@ export default function Display() {
           style={{
             height: "75vh",
             width: "85vw",
-            background: "#414833",
-            border: "solid #414833 40px",
+            background: "#003071", //change back to green if needed
+            border: "solid #003071 40px",
             borderRadius: "10px",
           }}
         >
           <div className="info-container">
             <div className="image-container">
-              <img src={`/api/files?image=${encodeURIComponent(image)}`} />
+              <img src={`/localhost:8000/api/files?image=${encodeURIComponent(image)}`} />
             </div>
 
             <div
@@ -108,15 +108,16 @@ export default function Display() {
                 flexDirection: "column",
                 height: "100%",
                 width: "65%",
-                justifyContent: "space-between",
+                justifyContent: "center",
+                gap: "5vh"
               }}
             >
               <div className="status-container">
-                Data: {data?.isRecyclable ?? "Unknown"}
+                {data?.isRecyclable ?? "Unknown"}
               </div>
 
               <div className="text-container">
-                Information: {data?.notes ?? "No information available"}
+                {data?.notes ?? "No information available"}
               </div>
             </div>
           </div>

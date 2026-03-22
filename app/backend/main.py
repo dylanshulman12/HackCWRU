@@ -111,7 +111,9 @@ def callReturnFile(file : str, city, state, zipCode):
 @app.get("/api/materialGet")
 def callReturnFile(file, city, state, zipCode): 
     UPLOAD_DIR = "uploads/"
-    return getReturnMaterial(os.path.join(UPLOAD_DIR, file), city, state, zipCode)
+    return_material = getReturnMaterial(os.path.join(UPLOAD_DIR, file), city, state, zipCode)
+    os.remove(os.path.join(UPLOAD_DIR, file))
+    return return_material;
 
 # @app.get("/api/location")
 # def serveLocation(location : dict):
